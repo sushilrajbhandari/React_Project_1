@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react/no-direct-mutation-state */
+import React, { Component } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import JSON from "./components/data/db.json"
+import NewsDisplay from "./components/NewsDisplay";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      news: JSON,
+    };
+  }
+
+  render() {
+    return (
+      <>
+        <Header />
+        <NewsDisplay dataList={this.state.news}/>
+        <hr/>
+        <Footer year={2020} month={"November"} />
+      </>
+    );
+  }
 }
 
 export default App;
