@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //import './CSS/myStyles.css'
 
-
 class Header extends Component {
   constructor() {
     super();
@@ -12,13 +11,14 @@ class Header extends Component {
     };
   }
 
-handleChange= (event)=>{
-    console.log(event)
-    console.log(event.target.value)
+  handleChange = (event) => {
+    console.log(event);
+    console.log(event.target.value);
     this.setState({
-        keyword:event.target.value ? event.target.value : " User Inputs"
-    })
-}
+      keyword: event.target.value ? event.target.value : " User Inputs",
+    });
+    this.props.userText(event.target.value);
+  };
 
   render() {
     const myStyle = {
@@ -36,12 +36,11 @@ handleChange= (event)=>{
         <header style={myStyle.header}>
           <div style={myStyle.logo}>{this.state.title}</div>
           <center>
-            <input type="text" onChange={this.handleChange}/>
+            <input type="text" onChange={this.handleChange} />
             <p style={{ color: "white" }}>{this.state.keyword}</p>
           </center>
           <hr />
         </header>
-        
       </>
     );
   }
